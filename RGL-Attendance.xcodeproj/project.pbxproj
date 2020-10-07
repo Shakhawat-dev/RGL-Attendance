@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD7B9676252C36E40034A7AB /* ColorValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7B9675252C36E40034A7AB /* ColorValues.swift */; };
+		FD7B9679252C3FB30034A7AB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7B9678252C3FB30034A7AB /* LoginView.swift */; };
+		FD7B967B252C45B50034A7AB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7B967A252C45B50034A7AB /* LoginViewModel.swift */; };
+		FD7B967E252C63760034A7AB /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7B967D252C63760034A7AB /* DashboardView.swift */; };
+		FD7B9680252C760A0034A7AB /*  DashboardUserDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7B967F252C760A0034A7AB /*  DashboardUserDetailsView.swift */; };
+		FD7B9682252C8DF40034A7AB /* DashboardGridItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7B9681252C8DF10034A7AB /* DashboardGridItemView.swift */; };
 		FD9D546F252B3AF2009172BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9D546E252B3AF2009172BB /* AppDelegate.swift */; };
 		FD9D5471252B3AF2009172BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9D5470252B3AF2009172BB /* SceneDelegate.swift */; };
 		FD9D5473252B3AF2009172BB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9D5472252B3AF2009172BB /* ContentView.swift */; };
@@ -21,6 +27,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FD7B9675252C36E40034A7AB /* ColorValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorValues.swift; sourceTree = "<group>"; };
+		FD7B9678252C3FB30034A7AB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		FD7B967A252C45B50034A7AB /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		FD7B967D252C63760034A7AB /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		FD7B967F252C760A0034A7AB /*  DashboardUserDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " DashboardUserDetailsView.swift"; sourceTree = "<group>"; };
+		FD7B9681252C8DF10034A7AB /* DashboardGridItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardGridItemView.swift; sourceTree = "<group>"; };
 		FD9D546B252B3AF2009172BB /* RGL-Attendance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RGL-Attendance.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD9D546E252B3AF2009172BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD9D5470252B3AF2009172BB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +59,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FD7B9674252C36990034A7AB /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				FD7B9675252C36E40034A7AB /* ColorValues.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		FD7B9677252C3F870034A7AB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FD7B9678252C3FB30034A7AB /* LoginView.swift */,
+				FD7B967A252C45B50034A7AB /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		FD7B967C252C634E0034A7AB /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				FD7B967D252C63760034A7AB /* DashboardView.swift */,
+				FD7B967F252C760A0034A7AB /*  DashboardUserDetailsView.swift */,
+				FD7B9681252C8DF10034A7AB /* DashboardGridItemView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
 		FD9D5462252B3AF2009172BB = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +105,9 @@
 		FD9D546D252B3AF2009172BB /* RGL-Attendance */ = {
 			isa = PBXGroup;
 			children = (
+				FD7B967C252C634E0034A7AB /* Dashboard */,
+				FD7B9677252C3F870034A7AB /* Login */,
+				FD7B9674252C36990034A7AB /* Utility */,
 				FD9D5483252B3B37009172BB /* Managers */,
 				FD9D5482252B3B19009172BB /* Coordinator */,
 				FD9D546E252B3AF2009172BB /* AppDelegate.swift */,
@@ -177,13 +219,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD7B9680252C760A0034A7AB /*  DashboardUserDetailsView.swift in Sources */,
 				FD9D5485252B3B67009172BB /* LocationManager.swift in Sources */,
+				FD7B9682252C8DF40034A7AB /* DashboardGridItemView.swift in Sources */,
+				FD7B967E252C63760034A7AB /* DashboardView.swift in Sources */,
 				FD9D5489252B3BD8009172BB /* MapView.swift in Sources */,
+				FD7B967B252C45B50034A7AB /* LoginViewModel.swift in Sources */,
 				FD9D546F252B3AF2009172BB /* AppDelegate.swift in Sources */,
 				FD9D548D252B42A8009172BB /* UserView.swift in Sources */,
+				FD7B9676252C36E40034A7AB /* ColorValues.swift in Sources */,
 				FD9D548B252B3EDC009172BB /* CircleImage.swift in Sources */,
 				FD9D5487252B3BA0009172BB /* Coordinator.swift in Sources */,
 				FD9D5471252B3AF2009172BB /* SceneDelegate.swift in Sources */,
+				FD7B9679252C3FB30034A7AB /* LoginView.swift in Sources */,
 				FD9D5473252B3AF2009172BB /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

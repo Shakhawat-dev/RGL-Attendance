@@ -11,12 +11,17 @@ import SwiftUI
 struct UserView: View {
     var body: some View {
         HStack {
-            CircleImage()
+            
+            CircleImage(frameSize: 48, lineWidth: 1, shadowSize: 2)
+                .padding()
+                
             VStack(alignment: .leading) {
                 Text("Hello, John!")
                     .font(.title)
+                    .foregroundColor(.white)
                 Text("Marketing")
                     .font(.system(.subheadline))
+                    .foregroundColor(.white)
             }
             Spacer()
             
