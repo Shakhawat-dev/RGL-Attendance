@@ -9,33 +9,54 @@
 import SwiftUI
 
 struct DashboardView: View {
-    var body: some View {
+    @EnvironmentObject var userData: UserData
     
-        ZStack {
-            VStack{
-                UserView()
-                DashboardUserDetailsView()
-                VStack {
-                    HStack {
-                        DashboardGridItemView(icon: "Man-checked-icon", text: "Attendance")
-                        DashboardGridItemView(icon: "Man-checked-icon", text: "Leave")
-                    }
-                    HStack {
-                        DashboardGridItemView(icon: "Man-checked-icon", text: "Attendance")
-                        DashboardGridItemView(icon: "Man-checked-icon", text: "Attendance")
-                    }
-                    HStack {
-                        DashboardGridItemView(icon: "Man-checked-icon", text: "Attendance")
-                        DashboardGridItemView(icon: "Man-checked-icon", text: "Attendance")
-                    }
-                }.padding()
+    @State private var showSignoutAlert = false
+    private var user = UserLocalStorage.getUserCredentials()
+    
+    var body: some View {
+        NavigationView {
+            ZStack {
                 
+                VStack{
+                    UserView(userName: user.loggedUser?.fullName ?? "User", designation: user.loggedUser?.designation ?? "Employee", textColor: .white)
+                    DashboardUserDetailsView()
+                    
+                    VStack {
+                        HStack {
+                            NavigationLink (destination: AttendanceView()) {
+                                DashboardGridItemView(icon: "Man-checked-icon", text: "Attendance")
+                                
+                            }.navigationBarHidden(true)
+                            
+                            DashboardGridItemView(icon: "Man-checked-icon", text: "Leave")
+                        }
+                        HStack {
+                            DashboardGridItemView(icon: "Man-checked-icon", text: "Attendance")
+                            DashboardGridItemView(icon: "Man-checked-icon", text: "Attendance")
+                        }
+                        HStack {
+                            DashboardGridItemView(icon: "Man-checked-icon", text: "Attendance")
+                            DashboardGridItemView(icon: "Man-checked-icon", text: "Signout").onTapGesture {
+                                self.showSignoutAlert = true
+                                
+                            }.alert(isPresented:$showSignoutAlert) {
+                                Alert(title: Text("Sign Out"), message: Text("Are you sure to sign out?"), primaryButton: .destructive(Text("Yes")) {
+                                    UserLocalStorage.clearUserCredentials()
+                                    self.userData.isLoggedIn = false
+                                    }, secondaryButton: .cancel(Text("No")))
+                            }
+                        }
+                    }.padding()
+                    
+                    
+                    
+                    Spacer()
+                }.background(Image("Background").resizable().scaledToFill().aspectRatio(contentMode: .fill).edgesIgnoringSafeArea(.all))
                 
-                
-                Spacer()
-            }.background(Image("Background").resizable().scaledToFill().aspectRatio(contentMode: .fill).edgesIgnoringSafeArea(.all))
-            
+            }
         }
+        
     }
     
 }

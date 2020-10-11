@@ -23,11 +23,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        let contentView = ContentView()
         let dashboardView = DashboardView()
         let loginView = LoginView()
+        let mainContainerView = MainContainerView()
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: loginView)
+            
+                window.rootViewController = UIHostingController(rootView: mainContainerView.environmentObject(UserData()))
+        
             self.window = window
             window.makeKeyAndVisible()
         }

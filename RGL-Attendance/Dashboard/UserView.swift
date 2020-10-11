@@ -9,6 +9,11 @@
 import SwiftUI
 
 struct UserView: View {
+    
+    @State var userName: String
+    @State var designation: String
+    @State var textColor: Color
+    
     var body: some View {
         HStack {
             
@@ -16,12 +21,12 @@ struct UserView: View {
                 .padding()
                 
             VStack(alignment: .leading) {
-                Text("Hello, John!")
+                Text("Hello, \(userName)!")
                     .font(.title)
-                    .foregroundColor(.white)
-                Text("Marketing")
+                    .foregroundColor(textColor)
+                Text(designation)
                     .font(.system(.subheadline))
-                    .foregroundColor(.white)
+                    .foregroundColor(textColor)
             }
             Spacer()
             
@@ -32,6 +37,6 @@ struct UserView: View {
 
 struct UserView_Previews: PreviewProvider {
     static var previews: some View {
-        UserView()
+        UserView(userName: "John", designation: "Marketing", textColor: .black)
     }
 }
