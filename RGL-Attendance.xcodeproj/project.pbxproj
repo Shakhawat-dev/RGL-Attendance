@@ -34,6 +34,8 @@
 		FD9D5489252B3BD8009172BB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9D5488252B3BD8009172BB /* MapView.swift */; };
 		FD9D548B252B3EDC009172BB /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9D548A252B3EDC009172BB /* CircleImage.swift */; };
 		FD9D548D252B42A8009172BB /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9D548C252B42A8009172BB /* UserView.swift */; };
+		FDC4171F25344C01002B0D20 /* AttendanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC4171E25344C01002B0D20 /* AttendanceViewModel.swift */; };
+		FDC41722253468BB002B0D20 /* AttendanceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC41721253468BB002B0D20 /* AttendanceResponse.swift */; };
 		FDD8BF752532ED4D000FE828 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD8BF742532ED4D000FE828 /* SplashScreenView.swift */; };
 		FDD8BF772532F97C000FE828 /* SplashLoginContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD8BF762532F97C000FE828 /* SplashLoginContainerView.swift */; };
 		FDD8BF7A25330A77000FE828 /* AttendanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD8BF7925330A77000FE828 /* AttendanceView.swift */; };
@@ -69,6 +71,8 @@
 		FD9D5488252B3BD8009172BB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		FD9D548A252B3EDC009172BB /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		FD9D548C252B42A8009172BB /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		FDC4171E25344C01002B0D20 /* AttendanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceViewModel.swift; sourceTree = "<group>"; };
+		FDC41721253468BB002B0D20 /* AttendanceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceResponse.swift; sourceTree = "<group>"; };
 		FDD8BF742532ED4D000FE828 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		FDD8BF762532F97C000FE828 /* SplashLoginContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashLoginContainerView.swift; sourceTree = "<group>"; };
 		FDD8BF7925330A77000FE828 /* AttendanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceView.swift; sourceTree = "<group>"; };
@@ -223,6 +227,8 @@
 			isa = PBXGroup;
 			children = (
 				FDD8BF7925330A77000FE828 /* AttendanceView.swift */,
+				FDC4171E25344C01002B0D20 /* AttendanceViewModel.swift */,
+				FDC41721253468BB002B0D20 /* AttendanceResponse.swift */,
 			);
 			path = Attendance;
 			sourceTree = "<group>";
@@ -325,6 +331,8 @@
 				FD7B9679252C3FB30034A7AB /* LoginView.swift in Sources */,
 				FDD8BF7A25330A77000FE828 /* AttendanceView.swift in Sources */,
 				FD9D5473252B3AF2009172BB /* ContentView.swift in Sources */,
+				FDC41722253468BB002B0D20 /* AttendanceResponse.swift in Sources */,
+				FDC4171F25344C01002B0D20 /* AttendanceViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

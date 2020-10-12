@@ -8,11 +8,33 @@
 
 import SwiftUI
 import Combine
+import MapKit
 
 struct AttendanceView: View {
+    
+    @ObservedObject var attendanceViewModel = AttendanceViewModel()
+    @ObservedObject private var locationManager = LocationManager()
+    
+    @Environment(\.presentationMode) var presentationMode
     private var user = UserLocalStorage.getUserCredentials()
     
+    @State private var showLoader = false
+    @State private var attendanceStatusSubscriber: AnyCancellable? = nil
+    
+    // For Toast
+    @State var showSuccessToast = false
+    @State var successMessage: String = ""
+    @State var showErrorToast = false
+    @State var errorMessage: String = ""
+    
+//    @Binding var showAttendance: Bool
+    
+//    let coordinate = locationManager.location?.coordinate ?? CLLocationCoordinate2D()
+    
     var body: some View {
+         let coordinate = locationManager.location?.coordinate ?? CLLocationCoordinate2D()
+        
+        return NavigationView {
             ZStack{
                 
                 VStack {
@@ -37,26 +59,45 @@ struct AttendanceView: View {
                             Spacer()
                             
                             VStack{
-                                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
-                                    Spacer()
-                                    Text("GIVE ATTENDANCE")
-                                        .foregroundColor(.white)
-                                    Spacer()
-                                    
-                                }.foregroundColor(.white)
-                                    .padding()
-                                    .background(Colors.blueTheme)
-                                    .cornerRadius(0)
-                                    .shadow(radius: 4)
+                                
+                                    Button(action: {
+                                        self.attendanceViewModel.doAttendance()
+                                    }) {
+                                        Spacer()
+                                        Text("GIVE ATTENDANCE")
+                                            .foregroundColor(.white)
+                                        Spacer()
+                                        
+                                    }.foregroundColor(.white)
+                                        .padding()
+                                        .background(Colors.blueTheme)
+                                        .cornerRadius(0)
+                                        .shadow(radius: 4)
+                                        .onReceive(self.attendanceViewModel.attendanceStatusPublisher.receive(on: RunLoop.main)) { attendanceTaken in
+                                            
+                                            self.presentationMode.wrappedValue.dismiss()
+                                            
+                                }
+                                
+                                
                             }.padding()
                             
                         }
                     }.frame(height: 196)
                     
                 }
-            }
+            }.navigationBarTitle(Text("Attendance"), displayMode: .inline)
+            .navigationBarHidden(false)
+                .navigationBarItems(trailing: Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    Text("Dismiss")
+                })
+            
         }
         
+    }
+    
     
 }
 

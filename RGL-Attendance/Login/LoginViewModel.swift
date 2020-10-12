@@ -68,7 +68,6 @@ class LoginViewModel: NSObject, ObservableObject, URLSessionTaskDelegate {
                 let loggedUser: LoggedUser
                 
                 // For String to JSON
-                
                 guard let userString = loginResponse.resdata.loggedInfo else {
                     print("Problem with parameter creation...")
                     return
