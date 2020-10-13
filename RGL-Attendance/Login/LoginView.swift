@@ -33,6 +33,9 @@ struct LoginView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 128,height: 128)
                     .padding(.top, 96)
+                    .onTapGesture {
+                        let uuid = UUID().uuidString
+                }
                 
                 Text("ROYAL GREEN")
                     .font(.system(.title))
