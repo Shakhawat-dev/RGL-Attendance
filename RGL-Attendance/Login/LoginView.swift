@@ -17,6 +17,9 @@ struct LoginView: View {
     @State private var loginStatusSubscriber: AnyCancellable? = nil
     @State private var loginButtonDisabled = true
     
+    // For SecretView
+    @State private var showSectretView = false
+    
     // For Toast
     @State var showSuccessToast = false
     @State var successMessage: String = ""
@@ -34,8 +37,8 @@ struct LoginView: View {
                     .frame(width: 128,height: 128)
                     .padding(.top, 96)
                     .onTapGesture {
-                        let uuid = UUID().uuidString
-                }
+                        self.showSectretView = true
+                }.sheet(isPresented: $showSectretView, content: SecretIDView.init)
                 
                 Text("ROYAL GREEN")
                     .font(.system(.title))

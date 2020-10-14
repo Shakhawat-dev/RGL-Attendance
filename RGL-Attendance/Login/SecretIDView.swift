@@ -12,7 +12,8 @@ struct SecretIDView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
-    @State var uuid: String?
+//    @State var uuid: String?
+    let uuid = UUID().uuidString
     
     var body: some View {
         NavigationView {
@@ -22,8 +23,9 @@ struct SecretIDView: View {
                     Text("Hello, Your Secret ID is:")
                         .font(.title)
                         .foregroundColor(Colors.blueTheme)
+                        .padding()
                     
-                    Text("\(uuid ?? "xx-xxxx-xxxxx-xxxxxx")")
+                    Text("\(uuid)")
                         .font(.subheadline)
                         .foregroundColor(Colors.blueTheme)
                 }
