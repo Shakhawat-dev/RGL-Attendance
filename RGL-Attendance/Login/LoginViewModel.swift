@@ -61,6 +61,10 @@ class LoginViewModel: NSObject, ObservableObject, URLSessionTaskDelegate {
         }, receiveValue: { loginResponse in
             if loginResponse.resdata.resstate == false {
                 self.errorToastPublisher.send((true, loginResponse.resdata.message ?? "Something wrong, Please try again"))
+                
+                // For Log Print
+                 
+                
             } else {
                 self.loginStatusPublisher.send(true)
                 print(loginResponse)
@@ -108,8 +112,10 @@ class LoginViewModel: NSObject, ObservableObject, URLSessionTaskDelegate {
     
     func executeLoginApiCall() -> AnyPublisher<LoginResponse, Error>? {
         // Creating User to JSONArray
-        let jsonObject = ["userName": self.username, "userPass": self.password]
+        let jsonObject = ["userName": self.username, "userPass": self.password, "macAddress": UserLocalStorage.getUUID()]
         let jsonArray = [jsonObject]
+        
+        print(jsonArray)
         
         if !JSONSerialization.isValidJSONObject(jsonArray) {
             print("Problem with parameter creation...")
@@ -121,6 +127,10 @@ class LoginViewModel: NSObject, ObservableObject, URLSessionTaskDelegate {
         guard let jsonData = tempJson else {
             print("Problem with parameter creation...")
             return nil
+        }
+        // For Log Print
+        if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
+            print(JSONString)
         }
         
         guard let urlComponents = URLComponents(string: NetworkApiService.webBaseUrl+"/api/employee/attendbyusername") else {

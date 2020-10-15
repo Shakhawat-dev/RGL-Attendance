@@ -32,9 +32,8 @@ struct AttendanceView: View {
 //    let coordinate = locationManager.location?.coordinate ?? CLLocationCoordinate2D()
     
     var body: some View {
-         let coordinate = locationManager.location?.coordinate ?? CLLocationCoordinate2D()
-        
-        return NavigationView {
+         
+        NavigationView {
             ZStack{
                 
                 VStack {
@@ -61,10 +60,17 @@ struct AttendanceView: View {
                             VStack{
                                 
                                     Button(action: {
-                                        self.attendanceViewModel.doAttendance()
+                                        let coordinate = locationManager.location?.coordinate ?? CLLocationCoordinate2D()
+                                        if (String(coordinate.latitude) == "0.0" && String(coordinate.longitude) == "0.0" ) {
+                                            errorMessage = "No Geo location"
+                                            showErrorToast = true
+                                        } else {
+                                            self.attendanceViewModel.doAttendance(latitude: String(coordinate.latitude), longitude: String(coordinate.longitude))
+                                        }
+                                        
                                     }) {
                                         Spacer()
-                                        Text("GIVE ATTENDANCE")
+                                        Text("SUBMIT ATTENDANCE")
                                             .foregroundColor(.white)
                                         Spacer()
                                         

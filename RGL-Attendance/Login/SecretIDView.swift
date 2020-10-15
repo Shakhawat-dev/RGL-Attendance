@@ -12,9 +12,6 @@ struct SecretIDView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
-//    @State var uuid: String?
-    let uuid = UUID().uuidString
-    
     var body: some View {
         NavigationView {
             ZStack {
@@ -25,9 +22,11 @@ struct SecretIDView: View {
                         .foregroundColor(Colors.blueTheme)
                         .padding()
                     
-                    Text("\(uuid)")
+                    Text("\(UserLocalStorage.getUUID())")
                         .font(.subheadline)
                         .foregroundColor(Colors.blueTheme)
+                    
+                    
                 }
             }.navigationBarTitle(Text("User Secret ID"), displayMode: .inline)
                 .navigationBarHidden(false)

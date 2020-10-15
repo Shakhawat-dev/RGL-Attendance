@@ -31,6 +31,12 @@ struct SplashScreenView: View {
                             }
                             
                         }
+                        
+                        if !UserLocalStorage.haveUUID() {
+                            // MARK: Generating UUID
+                            let uuid = UUID().uuidString
+                            UserLocalStorage.saveUUID(uuid: uuid)
+                        }
                 }
                 Spacer()
             }

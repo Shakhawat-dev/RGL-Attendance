@@ -9,5 +9,10 @@
 import Foundation
 
 struct AttendanceResponse: Codable {
-    var resdata: Int
+    var resdata: AttendanceResdata
+}
+
+struct AttendanceResdata: Codable {
+    var message: String?
+    var resstate: Bool?
 }

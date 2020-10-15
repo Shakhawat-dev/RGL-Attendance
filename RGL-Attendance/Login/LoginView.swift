@@ -37,13 +37,23 @@ struct LoginView: View {
                     .frame(width: 128,height: 128)
                     .padding(.top, 96)
                     .onTapGesture {
-                        self.showSectretView = true
-                }.sheet(isPresented: $showSectretView, content: SecretIDView.init)
+                        if !UserLocalStorage.haveUUID() {
+                            let uuid = UUID().uuidString
+                            
+                            UserLocalStorage.saveUUID(uuid: uuid)
+                            
+                            self.showSectretView = true
+                            
+                        } else {
+                            self.showSectretView = true
+                        }
+                        
+                        
+                    }.sheet(isPresented: $showSectretView, content: SecretIDView.init)
                 
                 Text("ROYAL GREEN")
                     .font(.system(.title))
                     .foregroundColor(.yellow)
-                
                 
                 TextField("Username", text: $loginViewModel.username)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -52,7 +62,7 @@ struct LoginView: View {
                     .padding(.leading, 32)
                     .padding(.trailing, 32)
                 
-                TextField("Password", text: $loginViewModel.password)
+                SecureField("Password", text: $loginViewModel.password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .cornerRadius(32)
                     .padding(.top, 8)
@@ -75,8 +85,8 @@ struct LoginView: View {
                             .stroke(Color.white, lineWidth: 2)
                             .shadow(radius: 8)
                     ).padding(.top, 8)
-                        .padding(.leading, 32)
-                        .padding(.trailing, 32)
+                    .padding(.leading, 32)
+                    .padding(.trailing, 32)
                     
                 }.onReceive(self.loginViewModel.validatedCredentials) {
                     validateCredential in

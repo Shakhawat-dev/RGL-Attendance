@@ -22,6 +22,9 @@ struct SplashLoginContainerView: View {
                         if UserLocalStorage.isLoggedIn() {
                             self.userData.isLoggedIn = true
                         }
+                        
+                        
+                        
                         self.userData.shouldShowSplash = false
                     }
             }

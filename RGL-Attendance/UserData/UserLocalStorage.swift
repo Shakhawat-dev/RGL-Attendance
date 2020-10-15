@@ -20,6 +20,22 @@ struct UserLocalStorage {
         return userDefault.value(forKey: "isLoggedIn") as? Bool ?? false
     }
     
+    static func saveUUID(uuid: String) {
+        userDefault.setValue(uuid, forKey: "userUUID")
+    }
+    
+    static func getUUID() -> String {
+        return userDefault.value(forKey: "userUUID") as? String ?? ""
+    }
+    
+    static func haveUUID() -> Bool {
+        if userDefault.value(forKey: "userUUID") != nil {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     static func saveUserCredentials(userCredentials: UserCredentials) {
         
         let encoder = JSONEncoder()

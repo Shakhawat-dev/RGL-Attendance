@@ -15,6 +15,7 @@ class AttendanceViewModel:NSObject, ObservableObject, URLSessionTaskDelegate {
     private var attendanceSubscriber: AnyCancellable? = nil
     private let userInfo = UserLocalStorage.getUserCredentials().loggedUser
     
+    
     let coordinate = LocationManager().location?.coordinate ?? CLLocationCoordinate2D()
     
     var showAttendanceLoader = PassthroughSubject<Bool, Never>()
@@ -41,9 +42,9 @@ class AttendanceViewModel:NSObject, ObservableObject, URLSessionTaskDelegate {
         self.errorToastPublisher.send((true, "Please turn on your internet connection!"))
     }
     
-    func doAttendance() {
+    func doAttendance(latitude: String, longitude: String) {
         print("Attendance")
-        self.attendanceSubscriber = self.executeLoginApiCall()?
+        self.attendanceSubscriber = self.executeLoginApiCall(latitude: latitude, longitude: longitude)?
             .sink(receiveCompletion: { completion in
                 switch completion {
                     case .finished:
@@ -51,8 +52,7 @@ class AttendanceViewModel:NSObject, ObservableObject, URLSessionTaskDelegate {
                     case .failure(let error): self.errorToastPublisher.send((true, error.localizedDescription))
                 }
             }, receiveValue: { attendanceResponse in
-                
-                if attendanceResponse.resdata == 0 {
+                if attendanceResponse.resdata.resstate == false {
                     self.errorToastPublisher.send((true, "Attendance could not be taken"))
                 } else {
                     self.successToastPublisher.send((true, "Succes!!!, Attendance taken"))
@@ -66,15 +66,19 @@ class AttendanceViewModel:NSObject, ObservableObject, URLSessionTaskDelegate {
             })
     }
     
-    func executeLoginApiCall() -> AnyPublisher<AttendanceResponse, Error>? {
+    func executeLoginApiCall(latitude: String, longitude: String) -> AnyPublisher<AttendanceResponse, Error>? {
+        
+        let userUUID = UserLocalStorage.getUUID()
+        
         // Creating User to JSONArray
         let jsonObject = ["employeeId": userInfo?.employeeId ?? 0,
                           "fullName": userInfo?.fullName ?? "",
                           "designation": userInfo?.designation ?? "",
                           "enrollNumber": userInfo?.enrollNumber ?? "",
                           "ssn": userInfo?.ssn ?? "",
-                          "latitude": coordinate.latitude,
-                          "longitude": coordinate.longitude] as [String : Any]
+                          "latitude": latitude,
+                          "longitude": longitude,
+                          "macAddress": userUUID] as [String : Any]
         
         let jsonArray = [jsonObject]
         
