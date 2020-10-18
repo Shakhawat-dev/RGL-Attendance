@@ -36,38 +36,76 @@ struct LoginView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 128,height: 128)
                     .padding(.top, 96)
-                    .onTapGesture {
-                        if !UserLocalStorage.haveUUID() {
-                            let uuid = UUID().uuidString
-                            
-                            UserLocalStorage.saveUUID(uuid: uuid)
-                            
-                            self.showSectretView = true
-                            
-                        } else {
-                            self.showSectretView = true
-                        }
-                        
-                        
-                    }.sheet(isPresented: $showSectretView, content: SecretIDView.init)
+//                    .onTapGesture {
+//                        if !UserLocalStorage.haveUUID() {
+//                            let uuid = UUID().uuidString
+//
+//                            UserLocalStorage.saveUUID(uuid: uuid)
+//
+//                            self.showSectretView = true
+//
+//                        } else {
+//                            self.showSectretView = true
+//                        }
+//
+//
+//                    }.sheet(isPresented: $showSectretView, content: SecretIDView.init)
                 
                 Text("ROYAL GREEN")
                     .font(.system(.title))
                     .foregroundColor(.yellow)
                 
-                TextField("Username", text: $loginViewModel.username)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .cornerRadius(32)
-                    .padding(.top, 32)
-                    .padding(.leading, 32)
-                    .padding(.trailing, 32)
+//                TextField("Username", text: $loginViewModel.username)
+//                    .textFieldStyle(RoundedBorderTextFieldStyle())
+//                    .cornerRadius(32)
+//                    .padding(.top, 32)
+//                    .padding(.leading, 32)
+//                    .padding(.trailing, 32)
                 
-                SecureField("Password", text: $loginViewModel.password)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .cornerRadius(32)
-                    .padding(.top, 8)
-                    .padding(.leading, 32)
-                    .padding(.trailing, 32)
+                HStack {
+                    Image(systemName: "person")
+                        .frame(width: 18, height: 18)
+                        .foregroundColor(Color.gray)
+                        .padding(.leading, 8)
+                        .padding(.top, 8)
+                        .padding(.bottom, 8)
+                    
+                    TextField("Username", text: $loginViewModel.username)
+                    
+                }.background(RoundedRectangle(cornerRadius: 32).fill(Color.white))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 32)
+                        .stroke(Color.white, lineWidth: 2)
+                        .shadow(radius: 8)
+                ).padding(.top, 32)
+                .padding(.leading, 32)
+                .padding(.trailing, 32)
+                
+//                SecureField("Password", text: $loginViewModel.password)
+//                    .textFieldStyle(RoundedBorderTextFieldStyle())
+//                    .cornerRadius(32)
+//                    .padding(.top, 8)
+//                    .padding(.leading, 32)
+//                    .padding(.trailing, 32)
+                
+                HStack {
+                    Image(systemName: "lock")
+                        .frame(width: 18, height: 18)
+                        .foregroundColor(Color.gray)
+                        .padding(.leading, 8)
+                        .padding(.top, 8)
+                        .padding(.bottom, 8)
+                    
+                    SecureField("Password", text: $loginViewModel.password)
+                        
+                }.background(RoundedRectangle(cornerRadius: 32).fill(Color.white))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 32)
+                        .stroke(Color.white, lineWidth: 2)
+                        .shadow(radius: 8)
+                ).padding(.top, 8)
+                .padding(.leading, 32)
+                .padding(.trailing, 32)
                 
                 Button(action: {
                     self.loginViewModel.doLogIn()

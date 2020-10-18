@@ -19,6 +19,7 @@ struct AttendanceView: View {
     private var user = UserLocalStorage.getUserCredentials()
     
     @State private var showLoader = false
+    @State private var showAttendanceAlert = false
     @State private var attendanceStatusSubscriber: AnyCancellable? = nil
     
     // For Toast
@@ -81,11 +82,15 @@ struct AttendanceView: View {
                                         .shadow(radius: 4)
                                         .onReceive(self.attendanceViewModel.attendanceStatusPublisher.receive(on: RunLoop.main)) { attendanceTaken in
                                             
-                                            self.presentationMode.wrappedValue.dismiss()
+                                            self.showAttendanceAlert = true
                                             
+                                            
+                                }.alert(isPresented: $showAttendanceAlert) {
+                                    Alert(title: Text("Attendance Taken!"), message: Text("You successfully submitted your attendance"), dismissButton: .default(Text("Okey")){
+                                        self.presentationMode.wrappedValue.dismiss()
+                                    })
                                 }
-                                
-                                
+  
                             }.padding()
                             
                         }
