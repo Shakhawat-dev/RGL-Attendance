@@ -91,8 +91,53 @@ struct AttendanceView: View {
                         }
                     }.frame(height: 196)
                     
+                    
+                    
                 }
-            }.navigationBarTitle(Text("Attendance"), displayMode: .inline)
+                
+                if self.showSuccessToast {
+                    SuccessToast(message: self.successMessage).onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            withAnimation() {
+                                self.showSuccessToast = false
+                                self.successMessage = ""
+                            }
+                        }
+                    }
+                }
+                
+                if showErrorToast {
+                    ErrorToast(message: self.errorMessage).onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            withAnimation() {
+                                self.showErrorToast = false
+                                self.errorMessage = ""
+                            }
+                        }
+                    }
+                }
+                
+                if showLoader {
+                    SpinLoaderView()
+                }
+                
+            }.onReceive(self.attendanceViewModel.showAttendanceLoader.receive(on: RunLoop.main)) { doingSomethingNow in
+                self.showLoader = doingSomethingNow
+            }.onReceive(self.attendanceViewModel.successToastPublisher.receive(on: RunLoop.main)) {
+                showToast, message in
+                self.successMessage = message
+                withAnimation() {
+                    self.showSuccessToast = showToast
+                }
+            }
+            .onReceive(self.attendanceViewModel.errorToastPublisher.receive(on: RunLoop.main)) {
+                showToast, message in
+                self.errorMessage = message
+                withAnimation() {
+                    self.showErrorToast = showToast
+                }
+            }
+            .navigationBarTitle(Text("Attendance"), displayMode: .inline)
             .navigationBarHidden(false)
                 .navigationBarItems(trailing: Button(action: {
                     self.presentationMode.wrappedValue.dismiss()

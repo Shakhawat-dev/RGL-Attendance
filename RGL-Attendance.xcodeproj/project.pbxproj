@@ -70,7 +70,7 @@
 		FD9D547C252B3B09009172BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD9D5484252B3B67009172BB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FD9D5486252B3BA0009172BB /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		FD9D5488252B3BD8009172BB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		FD9D5488252B3BD8009172BB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapView.swift; path = ../MapView.swift; sourceTree = "<group>"; };
 		FD9D548A252B3EDC009172BB /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		FD9D548C252B42A8009172BB /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		FDC4171E25344C01002B0D20 /* AttendanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceViewModel.swift; sourceTree = "<group>"; };
@@ -197,7 +197,6 @@
 				FD9D5479252B3B09009172BB /* LaunchScreen.storyboard */,
 				FD9D547C252B3B09009172BB /* Info.plist */,
 				FD9D5476252B3B09009172BB /* Preview Content */,
-				FD9D5488252B3BD8009172BB /* MapView.swift */,
 			);
 			path = "RGL-Attendance";
 			sourceTree = "<group>";
@@ -229,6 +228,7 @@
 		FDD8BF7825330A54000FE828 /* Attendance */ = {
 			isa = PBXGroup;
 			children = (
+				FD9D5488252B3BD8009172BB /* MapView.swift */,
 				FDD8BF7925330A77000FE828 /* AttendanceView.swift */,
 				FDC4171E25344C01002B0D20 /* AttendanceViewModel.swift */,
 				FDC41721253468BB002B0D20 /* AttendanceResponse.swift */,
@@ -263,7 +263,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1120;
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = royalgreen;
 				TargetAttributes = {
 					FD9D546A252B3AF2009172BB = {
@@ -380,6 +380,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -440,6 +441,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

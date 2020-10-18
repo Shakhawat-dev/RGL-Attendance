@@ -19,7 +19,7 @@ class NetworkApiService {
 
 func getCommonUrlRequest(url: URL) -> URLRequest {
     //Request type
-    var request = URLRequest(url: url)
+    let request = URLRequest(url: url)
     //Setting common headers
 //    let loggedUser = UserLocalStorage.getUserCredentials().loggedUser
 //    request.setValue(loggedUser?.ispToken ?? "", forHTTPHeaderField: "AuthorizedToken")
