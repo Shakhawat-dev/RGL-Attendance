@@ -23,14 +23,14 @@ struct UserView: View {
         HStack {
             
             CircleImage(frameSize: 48, lineWidth: 1, shadowSize: 2)
-                .padding()
             
             HStack {
                 VStack(alignment: .leading) {
                     
                     Text("Hello, \(userName)!")
-                        .font(.title)
+                        .font(.headline)
                         .foregroundColor(textColor)
+                        .multilineTextAlignment(.leading)
                     
                     Text(designation)
                         .font(.system(.subheadline))
@@ -48,7 +48,6 @@ struct UserView: View {
                             .resizable()
                             .frame(width: 32, height: 32, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                             .foregroundColor(Colors.blueAccentTheme)
-                            .padding()
                     }
                     .alert(isPresented:$showSignoutAlert) {
                         Alert(title: Text("Sign Out"), message: Text("Are you sure to sign out?"), primaryButton: .destructive(Text("Yes")) {

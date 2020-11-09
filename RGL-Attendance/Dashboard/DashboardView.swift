@@ -22,17 +22,27 @@ struct DashboardView: View {
             ZStack {
                 
                 VStack{
-                    UserView(userName: user.loggedUser?.fullName ?? "User", designation: user.loggedUser?.designation ?? "Employee", textColor: .white, showButton: true)
+                    UserView(userName: user.loggedUser?.fullName ?? "Userhhf hfhfh siiis hjsjfj jfksjfjffjjllf fjj", designation: user.loggedUser?.designation ?? "Employee", textColor: .white, showButton: true)
+                        .padding(.leading)
+                        .padding(.trailing, 8)
                     
                     DashboardUserDetailsView()
                     
                     VStack {
                         HStack {
                             
-                            DashboardGridItemView(icon: "Man-checked-icon", text: "Attendance")
-                                .onTapGesture {
-                                self.showAttendance.toggle()
-                            }.sheet(isPresented: $showAttendance, content: AttendanceView.init)
+                            if #available(iOS 14.0, *) {
+                                DashboardGridItemView(icon: "Man-checked-icon", text: "Attendance")
+                                    .onTapGesture {
+                                        self.showAttendance.toggle()
+                                    }.fullScreenCover(isPresented: $showAttendance, content: AttendanceView.init)
+                            } else {
+                                // Fallback on earlier versions
+                                DashboardGridItemView(icon: "Man-checked-icon", text: "Attendance")
+                                    .onTapGesture {
+                                        self.showAttendance.toggle()
+                                    }.sheet(isPresented: $showAttendance, content: AttendanceView.init)
+                            }
                     
                                 
                             
@@ -63,7 +73,8 @@ struct DashboardView: View {
                 }
                 
             }
-        }.background(Image("Background").resizable().scaledToFill().aspectRatio(contentMode: .fill).edgesIgnoringSafeArea(.all))
+        }
+        .background(Image("Background").resizable().scaledToFill().aspectRatio(contentMode: .fill).edgesIgnoringSafeArea(.all))
         
     }
     

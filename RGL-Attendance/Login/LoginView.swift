@@ -169,7 +169,7 @@ struct LoginView: View {
                 SpinLoaderView()
             }
             
-        }.onReceive(self.loginViewModel.showLoginLoader.receive(on: RunLoop.main)) { doingSomethingNow in
+        }.colorScheme(.light).onReceive(self.loginViewModel.showLoginLoader.receive(on: RunLoop.main)) { doingSomethingNow in
             self.showLoader = doingSomethingNow
         }.onReceive(self.loginViewModel.successToastPublisher.receive(on: RunLoop.main)) {
             showToast, message in

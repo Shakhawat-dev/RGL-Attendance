@@ -28,12 +28,12 @@ struct AttendanceView: View {
     @State var showErrorToast = false
     @State var errorMessage: String = ""
     
-//    @Binding var showAttendance: Bool
+    //    @Binding var showAttendance: Bool
     
-//    let coordinate = locationManager.location?.coordinate ?? CLLocationCoordinate2D()
+    //    let coordinate = locationManager.location?.coordinate ?? CLLocationCoordinate2D()
     
     var body: some View {
-         
+        
         NavigationView {
             ZStack{
                 
@@ -45,7 +45,8 @@ struct AttendanceView: View {
                         
                         VStack {
                             
-                            UserView(userName: user.loggedUser?.fullName ?? "User", designation: user.loggedUser?.designation ?? "Employee", textColor: .black)
+                            UserView(userName: user.loggedUser?.fullName ?? "User dfjbfsbkfk fkbfjk  skjfbjksfbjk sfkjbfskj", designation: user.loggedUser?.designation ?? "Employee", textColor: .black)
+                                .padding(.leading)
                             HStack {
                                 
                                 Text("Enroll Number:  \(user.loggedUser?.enrollNumber ?? "")")
@@ -60,37 +61,48 @@ struct AttendanceView: View {
                             
                             VStack{
                                 
-                                    Button(action: {
-                                        let coordinate = locationManager.location?.coordinate ?? CLLocationCoordinate2D()
-                                        if (String(coordinate.latitude) == "0.0" && String(coordinate.longitude) == "0.0" ) {
-                                            errorMessage = "No Geo location"
-                                            showErrorToast = true
-                                        } else {
-                                            self.attendanceViewModel.doAttendance(latitude: String(coordinate.latitude), longitude: String(coordinate.longitude))
-                                        }
-                                        
-                                    }) {
-                                        Spacer()
-                                        Text("SUBMIT ATTENDANCE")
-                                            .foregroundColor(.white)
-                                        Spacer()
-                                        
-                                    }.foregroundColor(.white)
-                                        .padding()
-                                        .background(Colors.blueTheme)
-                                        .cornerRadius(0)
-                                        .shadow(radius: 4)
-                                        .onReceive(self.attendanceViewModel.attendanceStatusPublisher.receive(on: RunLoop.main)) { attendanceTaken in
-                                            
-                                            self.showAttendanceAlert = true
-                                            
-                                            
+                                Button(action: {
+                                    let coordinate = locationManager.location?.coordinate ?? CLLocationCoordinate2D()
+                                    if (String(coordinate.latitude) == "0.0" && String(coordinate.longitude) == "0.0" ) {
+                                        errorMessage = "No Geo location"
+                                        showErrorToast = true
+                                    } else {
+                                        self.attendanceViewModel.doAttendance(latitude: String(coordinate.latitude), longitude: String(coordinate.longitude))
+                                    }
+                                    
+                                }) {
+                                    Spacer()
+                                    Text("SUBMIT ATTENDANCE")
+                                        .foregroundColor(.white)
+                                    Spacer()
+                                    
+                                }.foregroundColor(.white)
+                                .padding()
+                                .background(Colors.blueTheme)
+                                .cornerRadius(0)
+                                .shadow(radius: 4)
+                                .onReceive(self.attendanceViewModel.attendanceStatusPublisher.receive(on: RunLoop.main)) { attendanceTaken in
+                                    
+                                    self.showAttendanceAlert = true
+                                    
+                                    
                                 }.alert(isPresented: $showAttendanceAlert) {
                                     Alert(title: Text("Attendance Taken!"), message: Text("You successfully submitted your attendance"), dismissButton: .default(Text("Okey")){
                                         self.presentationMode.wrappedValue.dismiss()
                                     })
                                 }
-  
+                                
+                                // Action Sheet
+                                //                                    .actionSheet(isPresented: $showAttendanceAlert) { () -> ActionSheet in
+                                //                                            ActionSheet(title: Text("Attendance Taken!").font(.headline), message: Text("You successfully submitted your attendance").font(.callout), buttons: [
+                                //                                                .default(Text("Okey"), action: {
+                                //                                                    self.presentationMode.wrappedValue.dismiss()
+                                //                                                })
+                                //                                            ])
+                                //                                        }
+                                
+                                
+                                
                             }.padding()
                             
                         }
@@ -126,7 +138,9 @@ struct AttendanceView: View {
                     SpinLoaderView()
                 }
                 
-            }.onReceive(self.attendanceViewModel.showAttendanceLoader.receive(on: RunLoop.main)) { doingSomethingNow in
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .onReceive(self.attendanceViewModel.showAttendanceLoader.receive(on: RunLoop.main)) { doingSomethingNow in
                 self.showLoader = doingSomethingNow
             }.onReceive(self.attendanceViewModel.successToastPublisher.receive(on: RunLoop.main)) {
                 showToast, message in
@@ -144,11 +158,11 @@ struct AttendanceView: View {
             }
             .navigationBarTitle(Text("Attendance"), displayMode: .inline)
             .navigationBarHidden(false)
-                .navigationBarItems(trailing: Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
-                }) {
-                    Text("Dismiss")
-                })
+            .navigationBarItems(trailing: Button(action: {
+                self.presentationMode.wrappedValue.dismiss()
+            }) {
+                Text("Dismiss")
+            })
             
         }
         

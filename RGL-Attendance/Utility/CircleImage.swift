@@ -15,12 +15,15 @@ struct CircleImage: View {
     @State var shadowSize: CGFloat
     
     var body: some View {
-        Image("avatar-male")
-        .resizable()
-        .frame(width: frameSize,height: frameSize)
-        .clipShape(Circle())
-            .overlay(Circle().stroke(Colors.blueAccentTheme, lineWidth: lineWidth))
-            .shadow(color: Colors.blueAccentTheme,radius: shadowSize).accentColor(Colors.blueAccentTheme)
+        VStack {
+            Image("avatar-male")
+            .resizable()
+            .frame(width: frameSize,height: frameSize)
+            .clipShape(Circle())
+                .overlay(Circle().stroke(Colors.blueAccentTheme, lineWidth: lineWidth))
+                .shadow(color: Colors.blueAccentTheme,radius: shadowSize).accentColor(Colors.blueAccentTheme)
+            
+        }
         
     }
 }
