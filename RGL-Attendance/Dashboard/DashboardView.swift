@@ -23,8 +23,8 @@ struct DashboardView: View {
                 
                 VStack{
                     UserView(userName: user.loggedUser?.fullName ?? "Userhhf hfhfh siiis hjsjfj jfksjfjffjjllf fjj", designation: user.loggedUser?.designation ?? "Employee", textColor: .white, showButton: true)
-                        .padding(.leading)
-                        .padding(.trailing, 8)
+                        
+                        .padding()
                     
                     DashboardUserDetailsView()
                     

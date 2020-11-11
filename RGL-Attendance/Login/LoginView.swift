@@ -54,14 +54,7 @@ struct LoginView: View {
                 Text("ROYAL GREEN")
                     .font(.system(.title))
                     .foregroundColor(.yellow)
-                
-//                TextField("Username", text: $loginViewModel.username)
-//                    .textFieldStyle(RoundedBorderTextFieldStyle())
-//                    .cornerRadius(32)
-//                    .padding(.top, 32)
-//                    .padding(.leading, 32)
-//                    .padding(.trailing, 32)
-                
+
                 HStack {
                     Image(systemName: "person")
                         .frame(width: 18, height: 18)
@@ -80,13 +73,6 @@ struct LoginView: View {
                 ).padding(.top, 32)
                 .padding(.leading, 32)
                 .padding(.trailing, 32)
-                
-//                SecureField("Password", text: $loginViewModel.password)
-//                    .textFieldStyle(RoundedBorderTextFieldStyle())
-//                    .cornerRadius(32)
-//                    .padding(.top, 8)
-//                    .padding(.leading, 32)
-//                    .padding(.trailing, 32)
                 
                 HStack {
                     Image(systemName: "lock")

@@ -12,6 +12,7 @@ import Combine
 struct UserLocalStorage {
     private static let userDefault = UserDefaults.standard
     
+    // Managing SignedIn
     static func setUserSignedIn(isLogged: Bool) {
         userDefault.set(isLogged, forKey: "isLoggedIn")
     }
@@ -20,6 +21,7 @@ struct UserLocalStorage {
         return userDefault.value(forKey: "isLoggedIn") as? Bool ?? false
     }
     
+    // Managing UUID
     static func saveUUID(uuid: String) {
         userDefault.setValue(uuid, forKey: "userUUID")
     }
